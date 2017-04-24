@@ -20,6 +20,8 @@ struct Constants {
     static let MainStoryboard = "Main"
     static let JSONType = "json"
     static let SampleJSONInput = "sampleJSONInput"
+    static let Ok = "OK"
+    static let Cancel = "Cancel"
     
   }
   
@@ -54,6 +56,13 @@ struct Constants {
   
   struct PostInfoVC {
     static let EstimatedRowHeight:CGFloat = 160
+  }
+  
+  // MARK : - SubmitNewTopicVC
+  
+  struct SubmitNewTopicVC {
+    static let MaximumTopicCount = 255
+    static let EnterTopicDescription = "Please enter a topic description"
   }
   
   // MARK : - PostInformationTableViewCell

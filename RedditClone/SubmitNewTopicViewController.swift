@@ -22,12 +22,41 @@ class SubmitNewTopicViewController : UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     setTextViewBorderColor()
+    addKeyboardToolBar()
+    setTextViewAsFirstResponder()
+    
   }
   
   func setTextViewBorderColor() {
     inputTextView.layer.borderColor = UIColor.lightGray.cgColor
   }
+
+  func setTextViewAsFirstResponder() {
+    inputTextView.becomeFirstResponder()
+  }
+  
+  // MARK : - Add Keybord Toolbar
+  
+  func addKeyboardToolBar() {
+    
+    let keyboardToolbar = UIToolbar()
+    keyboardToolbar.tintColor = UIColor.black
+    keyboardToolbar.sizeToFit()
+    let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,target: nil, action: nil)
+    let doneBarButton = UIBarButtonItem(title: Constants.Common.Ok , style: .plain, target: self, action: #selector(endEditing(_:)))
+    keyboardToolbar.items = [flexBarButton, doneBarButton]
+    
+    inputTextView.inputAccessoryView = keyboardToolbar
+  }
+  
+  func endEditing(_ sender:UIBarButtonItem) {
+    self.view.endEditing(true)
+  }
+
+
+  // MARK : - Target Actions
 
   @IBAction func tapBackToTheListButton(_ sender: UIBarButtonItem) {
     _ = navigationController?.popViewController(animated: true)
@@ -35,6 +64,49 @@ class SubmitNewTopicViewController : UIViewController {
   
   @IBAction func tapSubmitButton(_ sender: UIButton) {
     
+    if inputTextView.text.isEmpty {
+      showAlert()
+    }
+  }
+  
+  func showAlert() {
+    
+    let alert = UIAlertController(title: "", message: Constants.SubmitNewTopicVC.EnterTopicDescription, preferredStyle: .alert)
+    let alertOkAction = UIAlertAction(title: Constants.Common.Ok, style: .default)
+    alert.addAction(alertOkAction)
+    
+    present(alert, animated: true, completion: nil)
+  }
+}
+
+// MARK : - SubmitNewTopicViewController : UITextViewDelegate
+
+extension SubmitNewTopicViewController : UITextViewDelegate {
+  
+  // MARK : - UITextViewDelegate Methods 
+  
+  func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    
+    if text.characters.count == 0 {  // When the delete key is entered
+      
+      if textView.text.characters.count != 0 {  // Delete key is only allowed when texts exist
+        return true
+      }
+    } else if textView.text.characters.count > (Constants.SubmitNewTopicVC.MaximumTopicCount-1) {
+      // limit the number of input to 255
+      return false
+    }
+      
+    return true
+
+  }
+  
+  func textViewDidChange(_ textView: UITextView) {
+    
+    if textView == inputTextView {
+      let textLength = textView.text.characters.count
+      textCountLabel.text = "\(textLength)" + "/" + "\(Constants.SubmitNewTopicVC.MaximumTopicCount)"
+    }
   }
   
 }
