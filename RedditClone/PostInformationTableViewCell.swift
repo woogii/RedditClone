@@ -20,6 +20,9 @@ class PostInformationTableViewCell: UITableViewCell {
   @IBOutlet weak var upvotesButton: UIButton!
   @IBOutlet weak var downvotesButton: UIButton!
   
+  var upvoteTapAction: (()->Void)? = nil
+  var downvoteTapAction: (()->Void)? = nil
+  
   // MARK : - Property Observer
   
   var postInfo : PostInformation! {
@@ -38,13 +41,27 @@ class PostInformationTableViewCell: UITableViewCell {
   }
 
   func setButtonsCornerRadius() {
-    upvotesButton.layer.cornerRadius = 4
-    downvotesButton.layer.cornerRadius = 4
+    upvotesButton.layer.cornerRadius   = Constants.PostInformationTableViewCell.CornerRadius
+    downvotesButton.layer.cornerRadius = Constants.PostInformationTableViewCell.CornerRadius
   }
   
   func setButtonsBorderColor() {
     upvotesButton.layer.borderColor = UIColor.gray.cgColor
     downvotesButton.layer.borderColor = UIColor.gray.cgColor
+  }
+  
+  // MARK : - Target Actions 
+  
+  @IBAction func tapUpvoteButton(_ sender: UIButton) {
+    if let upvoteButtonAction = self.upvoteTapAction {
+      upvoteButtonAction()
+    }
+  }
+  
+  @IBAction func tapDownvoteButton(_ sender: UIButton) {
+    if let downvoteButtonAction = self.downvoteTapAction {
+      downvoteButtonAction()
+    }
   }
   
   // MARK : - Managing Cell Selection
@@ -56,6 +73,8 @@ class PostInformationTableViewCell: UITableViewCell {
     self.contentView.backgroundColor = color
     
   }
+  
+  // MARK : - Update Subviews  
   
   func updateCell() {
     

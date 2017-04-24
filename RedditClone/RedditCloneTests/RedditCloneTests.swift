@@ -100,6 +100,45 @@ class RedditCloneTests: XCTestCase {
     XCTAssertTrue( cell.reuseIdentifier == expectedReuseIdentifier )
   }
 
+  func testTableViewCellUpvoteButtonAction() {
+    
+    do {
+      let dictionaryArray = try(JSONSerialization.jsonObject(with: bundleData, options: .allowFragments)) as? [[String: AnyObject]]
+      postInformationList = PostInformation.createPostList(dictionaryArray!)
+    } catch _ {}
+    
+    let indexPath = IndexPath(item: 0, section: 0)
+    var post = postInformationList[0]
+    let expectedValue = post.upvoteCount + 1
+    
+    let cell = controllerUnderTest.tableView(controllerUnderTest.tableView, cellForRowAt: indexPath) as! PostInformationTableViewCell
+    post.upvoteCount += 1
+    cell.postInfo = post
+    
+    
+    XCTAssertTrue(cell.postInfo.upvoteCount == expectedValue)
+  }
+  
+  func testTableViewCellDownvoteButtonAction() {
+    
+    do {
+      let dictionaryArray = try(JSONSerialization.jsonObject(with: bundleData, options: .allowFragments)) as? [[String: AnyObject]]
+      postInformationList = PostInformation.createPostList(dictionaryArray!)
+    } catch _ {}
+    
+    let indexPath = IndexPath(item: 0, section: 0)
+    var post = postInformationList[0]
+    let expectedValue = post.upvoteCount - 1
+    
+    let cell = controllerUnderTest.tableView(controllerUnderTest.tableView, cellForRowAt: indexPath) as! PostInformationTableViewCell
+    post.upvoteCount -= 1
+    cell.postInfo = post
+    
+    
+    XCTAssertTrue(cell.postInfo.upvoteCount == expectedValue)
+  }
+
+  
   // MARK : - Tear Down
   
   override func tearDown() {

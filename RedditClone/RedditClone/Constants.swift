@@ -55,5 +55,11 @@ struct Constants {
     static let EstimatedRowHeight:CGFloat = 160
   }
   
+  // MARK : - PostInformationTableViewCell
+  
+  struct PostInformationTableViewCell {
+    static let CornerRadius:CGFloat = 4
+  }
+  
   
 }

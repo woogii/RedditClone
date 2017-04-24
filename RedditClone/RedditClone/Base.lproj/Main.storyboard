@@ -56,6 +56,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapUpvoteButton:" destination="ven-cV-kbs" eventType="touchUpInside" id="OaA-Jv-P5D"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="myU-AC-Itu">
                                                     <rect key="frame" x="154" y="124" width="78" height="30"/>
@@ -69,6 +72,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="tapDownvoteButton:" destination="ven-cV-kbs" eventType="touchUpInside" id="h6Z-QT-BIR"/>
+                                                    </connections>
                                                 </button>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rhH-Lp-r2u">
                                                     <rect key="frame" x="278" y="17" width="80" height="80"/>
@@ -85,7 +91,6 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="myU-AC-Itu" firstAttribute="leading" secondItem="b52-tl-H30" secondAttribute="trailing" constant="10" id="IgJ-69-4Q8"/>
                                                 <constraint firstAttribute="bottom" secondItem="b52-tl-H30" secondAttribute="bottom" constant="12" id="Jmj-ea-79S"/>
                                                 <constraint firstItem="Jdc-mv-qWC" firstAttribute="leading" secondItem="AzA-2G-uKB" secondAttribute="leading" constant="20" id="Mav-C5-IQt"/>
                                                 <constraint firstItem="b52-tl-H30" firstAttribute="leading" secondItem="AzA-2G-uKB" secondAttribute="leadingMargin" constant="100" id="PtN-XZ-HrA"/>
@@ -94,6 +99,7 @@
                                                 <constraint firstItem="rhH-Lp-r2u" firstAttribute="top" secondItem="AzA-2G-uKB" secondAttribute="topMargin" constant="9" id="YMp-GI-4fD"/>
                                                 <constraint firstAttribute="bottom" secondItem="gWM-x3-PZq" secondAttribute="bottom" constant="5" id="hKH-7E-OrW"/>
                                                 <constraint firstItem="myU-AC-Itu" firstAttribute="top" secondItem="gWM-x3-PZq" secondAttribute="top" id="if2-Gj-JMN"/>
+                                                <constraint firstItem="myU-AC-Itu" firstAttribute="leading" secondItem="gWM-x3-PZq" secondAttribute="trailing" constant="56" id="j49-pT-VIt"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="rhH-Lp-r2u" secondAttribute="trailing" constant="9" id="oCB-Dc-jsZ"/>
                                                 <constraint firstItem="gWM-x3-PZq" firstAttribute="leading" secondItem="AzA-2G-uKB" secondAttribute="leading" constant="20" id="pUm-Gf-Wf8"/>
                                                 <constraint firstItem="myU-AC-Itu" firstAttribute="height" secondItem="gWM-x3-PZq" secondAttribute="height" id="rfj-7M-rxk"/>
@@ -101,7 +107,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="downvotesButton" destination="myU-AC-Itu" id="T9b-jI-igu"/>
+                                            <outlet property="downvotesButton" destination="myU-AC-Itu" id="qfm-zN-4h2"/>
                                             <outlet property="postImageView" destination="rhH-Lp-r2u" id="eVt-t0-XhU"/>
                                             <outlet property="titleLabel" destination="Jdc-mv-qWC" id="8b8-BY-nhS"/>
                                             <outlet property="upvoteCountLabel" destination="b52-tl-H30" id="XKo-bd-t5q"/>

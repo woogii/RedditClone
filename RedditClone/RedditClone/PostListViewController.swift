@@ -65,9 +65,24 @@ extension PostListViewController : UITableViewDataSource {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.PostInfoTableViewCell, for: indexPath) as! PostInformationTableViewCell
-    cell.postInfo = postList[indexPath.row]
+    
+    configureCell(cell: cell, indexPath: indexPath)
     return cell
+  }
+  
+  func configureCell(cell:PostInformationTableViewCell, indexPath:IndexPath) {
+    
+    cell.postInfo = postList[indexPath.row]
+    cell.upvoteTapAction = { [weak self] in
+      self?.postList[indexPath.row].upvoteCount += 1
+      cell.postInfo = self?.postList[indexPath.row]
+    }
+    cell.downvoteTapAction = { [weak self] in
+      self?.postList[indexPath.row].upvoteCount -= 1
+      cell.postInfo = self?.postList[indexPath.row]
+    }
   }
 }
 
