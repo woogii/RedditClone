@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK : - Constants
 
@@ -15,8 +16,17 @@ struct Constants {
   // MARK : - Common 
   
   struct Common {
+    
+    static let MainStoryboard = "Main"
     static let JSONType = "json"
     static let SampleJSONInput = "sampleJSONInput"
+    
+  }
+  
+  // MARK : - Storyboard Identifier
+  
+  struct StoryboardIdentifier {
+    static let PostListViewController = "PostListVC"
   }
   
   // MARK : - JSON Response Keys
@@ -37,6 +47,12 @@ struct Constants {
   
   struct CellIdentifier {
     static let PostInfoTableViewCell = "postInformationTableViewCell"
+  }
+  
+  // MARK : - PostInfoVC 
+  
+  struct PostInfoVC {
+    static let EstimatedRowHeight:CGFloat = 160
   }
   
   

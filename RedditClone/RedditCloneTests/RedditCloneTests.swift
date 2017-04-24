@@ -7,6 +7,8 @@
 //
 
 import XCTest
+import UIKit
+
 @testable import RedditClone
 
 // MARK : - RedditCloneTests: XCTestCase
@@ -15,6 +17,7 @@ class RedditCloneTests: XCTestCase {
   
   // MARK : - Property 
   
+  var controllerUnderTest: PostListViewController!
   var postInformationList:[PostInformation]!
   var bundleData:Data!
   
@@ -23,7 +26,22 @@ class RedditCloneTests: XCTestCase {
   override func setUp() {
     
     super.setUp()
+    createTestViewController()
     createSamplePostInformationData()
+  }
+  
+  func createTestViewController() {
+    
+    controllerUnderTest = UIStoryboard(name: Constants.Common.MainStoryboard ,
+                                       bundle: nil).instantiateViewController(withIdentifier: Constants.StoryboardIdentifier.PostListViewController) as! PostListViewController
+    _ = controllerUnderTest.view  // load view hierarchy
+  }
+  
+  func testLoadSampleDataFromBundle() {
+    
+    controllerUnderTest.loadSampleDataFromBundle()
+    XCTAssertEqual(controllerUnderTest?.postList.count, 20, "couldn't fetch 20 items")
+    
   }
   
   func createSamplePostInformationData() {
@@ -33,18 +51,6 @@ class RedditCloneTests: XCTestCase {
   }
 
   
-  // MARK : - Tear Down
-  
-  override func tearDown() {
-    clearTestVariables()
-    super.tearDown()
-  }
-  
-  func clearTestVariables() {
-    postInformationList = nil
-    bundleData = nil
-  }
-
   func testCreatePostListInPostInformationStruct() {
     
     do {
@@ -54,9 +60,57 @@ class RedditCloneTests: XCTestCase {
       XCTAssertEqual(postInformationList.count, 20, "couldn't parse 20 items from bundle")
       
     } catch _ {}
-    
+  }
 
+  // MARK : - UITableView Tests
+  
+  func testControllerUnderTest_TableViewIsNotNilAfterViewDidLoad() {
+    XCTAssertNotNil(controllerUnderTest.tableView)
+  }
+  
+  func testControllerUnderTest_ShouldSetTableViewDataSource() {
+    XCTAssertNotNil(controllerUnderTest.tableView.dataSource)
+  }
+  
+  func testControllerUnderTest_ShouldSetTableViewDelegate() {
+    XCTAssertNotNil(controllerUnderTest.tableView.delegate)
+  }
+  
+  func testControllerUnderTest_ConformsToTableViewDataSourceProtocol() {
+    XCTAssertTrue(controllerUnderTest.conforms(to: UITableViewDataSource.self))
+  }
+  
+  func testTableViewNumberOfRowsInSection() {
+    let expectedRows = 20
+    XCTAssertTrue(controllerUnderTest.tableView.numberOfRows(inSection: 0) == expectedRows)
+  }
+  
+  func testTableViewHeightForRowAtIndexPath() {
+  
+    let expectedHeight:CGFloat = 44
+    let actualHeight = controllerUnderTest.tableView.rowHeight
+    XCTAssertFalse(expectedHeight == actualHeight)
+  }
+
+  func testTableViewCellCreateCellsWithReuseIdentifier() {
     
+    let indexPath = IndexPath(item: 0, section: 0)
+    let cell = controllerUnderTest.tableView(controllerUnderTest.tableView, cellForRowAt: indexPath) as! PostInformationTableViewCell
+    let expectedReuseIdentifier = Constants.CellIdentifier.PostInfoTableViewCell
+    XCTAssertTrue( cell.reuseIdentifier == expectedReuseIdentifier )
+  }
+
+  // MARK : - Tear Down
+  
+  override func tearDown() {
+    clearTestVariables()
+    super.tearDown()
+  }
+  
+  func clearTestVariables() {
+    postInformationList = nil
+    controllerUnderTest = nil
+    bundleData = nil
   }
   
   
