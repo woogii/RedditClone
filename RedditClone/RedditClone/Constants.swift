@@ -27,6 +27,7 @@ struct Constants {
   
   struct StoryboardIdentifier {
     static let PostListViewController = "PostListVC"
+    static let SubmitNewTopicViewController = "submitNewTopicVC"
   }
   
   // MARK : - JSON Response Keys

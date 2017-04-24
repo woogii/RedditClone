@@ -18,6 +18,7 @@
 		B888359C1EADC09A000F760E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888359B1EADC09A000F760E /* Constants.swift */; };
 		B88835A01EADD15C000F760E /* sampleJSONInput.json in Resources */ = {isa = PBXBuildFile; fileRef = B888359F1EADD15C000F760E /* sampleJSONInput.json */; };
 		B88835A41EADD3A9000F760E /* sampleJSONInput.json in Resources */ = {isa = PBXBuildFile; fileRef = B88835A31EADD3A9000F760E /* sampleJSONInput.json */; };
+		B88835A61EAE1E78000F760E /* SubmitNewTopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88835A51EAE1E78000F760E /* SubmitNewTopicViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		B888359B1EADC09A000F760E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B888359F1EADD15C000F760E /* sampleJSONInput.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleJSONInput.json; sourceTree = "<group>"; };
 		B88835A31EADD3A9000F760E /* sampleJSONInput.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleJSONInput.json; sourceTree = "<group>"; };
+		B88835A51EAE1E78000F760E /* SubmitNewTopicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitNewTopicViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				B88835741EADABBA000F760E /* PostListViewController.swift */,
+				B88835A51EAE1E78000F760E /* SubmitNewTopicViewController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -274,6 +277,7 @@
 				B88835751EADABBA000F760E /* PostListViewController.swift in Sources */,
 				B88835971EADB4DF000F760E /* PostInformationTableViewCell.swift in Sources */,
 				B88835731EADABBA000F760E /* AppDelegate.swift in Sources */,
+				B88835A61EAE1E78000F760E /* SubmitNewTopicViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

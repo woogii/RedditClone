@@ -129,13 +129,97 @@
                             <constraint firstItem="4pk-eI-hta" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="o5G-WP-9A5"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Topic list" id="rQV-Rk-Njn"/>
+                    <navigationItem key="navigationItem" title="Topic list" id="rQV-Rk-Njn">
+                        <barButtonItem key="rightBarButtonItem" title="new" id="ZqL-DD-L72">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <segue destination="JQx-Lh-Byy" kind="show" id="VgE-Co-eae"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="4pk-eI-hta" id="bbl-l1-lgn"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="844" y="113"/>
+        </scene>
+        <!--Submit-->
+        <scene sceneID="vUa-1o-cSM">
+            <objects>
+                <viewController storyboardIdentifier="submitNewTopicVC" title="Submit" automaticallyAdjustsScrollViewInsets="NO" id="JQx-Lh-Byy" customClass="SubmitNewTopicViewController" customModule="RedditClone" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="sdH-pF-AJC"/>
+                        <viewControllerLayoutGuide type="bottom" id="rny-oF-ckt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="0zn-wE-hcd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4wu-On-TiJ">
+                                <rect key="frame" x="20" y="89" width="335" height="180"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="cdE-6l-KSx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlN-Mk-aiK">
+                                <rect key="frame" x="20" y="284" width="335" height="45"/>
+                                <color key="backgroundColor" red="1" green="0.31267073225590858" blue="0.062215357078802436" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="ByU-pL-XdR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapSubmitButton:" destination="JQx-Lh-Byy" eventType="touchUpInside" id="h9l-c4-LOg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/255" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gW5-cT-KCy">
+                                <rect key="frame" x="319.5" y="69" width="35.5" height="14.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="4wu-On-TiJ" firstAttribute="leading" secondItem="0zn-wE-hcd" secondAttribute="leading" constant="20" id="9BK-23-gED"/>
+                            <constraint firstItem="DlN-Mk-aiK" firstAttribute="leading" secondItem="0zn-wE-hcd" secondAttribute="leading" constant="20" id="Cf4-rc-q1M"/>
+                            <constraint firstItem="gW5-cT-KCy" firstAttribute="top" secondItem="sdH-pF-AJC" secondAttribute="bottom" constant="5" id="EMn-eH-cgV"/>
+                            <constraint firstItem="DlN-Mk-aiK" firstAttribute="top" secondItem="4wu-On-TiJ" secondAttribute="bottom" constant="15" id="aca-av-7gE"/>
+                            <constraint firstItem="4wu-On-TiJ" firstAttribute="top" secondItem="sdH-pF-AJC" secondAttribute="bottom" constant="25" id="act-z4-rzk"/>
+                            <constraint firstAttribute="trailing" secondItem="DlN-Mk-aiK" secondAttribute="trailing" constant="20" id="jPo-00-t6P"/>
+                            <constraint firstAttribute="trailing" secondItem="4wu-On-TiJ" secondAttribute="trailing" constant="20" id="wZc-4i-0UJ"/>
+                            <constraint firstAttribute="trailing" secondItem="gW5-cT-KCy" secondAttribute="trailing" constant="20" id="wn9-no-LAD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Submit Topic" id="uqE-VK-SjY">
+                        <barButtonItem key="leftBarButtonItem" image="ic_back" id="SGM-KJ-kDO">
+                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="tapBackToTheListButton:" destination="JQx-Lh-Byy" id="v1h-dJ-27E"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="inputTextView" destination="4wu-On-TiJ" id="Y9x-az-4z5"/>
+                        <outlet property="submitButton" destination="DlN-Mk-aiK" id="ZyV-ak-jh8"/>
+                        <outlet property="textCountLabel" destination="gW5-cT-KCy" id="64I-38-B7O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FsJ-hQ-52U" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1565.5999999999999" y="109.29535232383809"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="h3Y-w9-IeV">
@@ -156,4 +240,7 @@
             <point key="canvasLocation" x="117.59999999999999" y="777.66116941529242"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="ic_back" width="16" height="16"/>
+    </resources>
 </document>
