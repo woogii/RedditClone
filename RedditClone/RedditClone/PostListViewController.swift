@@ -23,12 +23,6 @@ class PostListViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     loadSampleDataFromBundle()
-    setTableViewDynamicHeightOptions()
-  }
-  
-  func setTableViewDynamicHeightOptions() {
-    tableView.estimatedRowHeight = Constants.PostInfoVC.EstimatedRowHeight
-    tableView.rowHeight = UITableViewAutomaticDimension
   }
   
   // MARK : - Load Sample Data
@@ -72,7 +66,7 @@ extension PostListViewController : UITableViewDataSource {
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: Constants.CellIdentifier.PostInfoTableViewCell, for: indexPath) as! PostInformationTableViewCell
-    
+    cell.postInfo = postList[indexPath.row]
     return cell
   }
 }

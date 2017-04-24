@@ -44,9 +44,11 @@ struct PostInformation {
       postList.append(post)
     }
     
-    return postList
+    // Sort the list by upvote 
+    return postList.sorted(by:{
+      return $0.upvoteCount > $1.upvoteCount
+    })
   }
-  
   
   
 }
