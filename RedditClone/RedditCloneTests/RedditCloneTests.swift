@@ -9,28 +9,55 @@
 import XCTest
 @testable import RedditClone
 
+// MARK : - RedditCloneTests: XCTestCase
+
 class RedditCloneTests: XCTestCase {
+  
+  // MARK : - Property 
+  
+  var postInformationList:[PostInformation]!
+  var bundleData:Data!
+  
+  // MARK : - Set Up
+  
+  override func setUp() {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    super.setUp()
+    createSamplePostInformationData()
+  }
+  
+  func createSamplePostInformationData() {
+    let testBundle = Bundle(for: type(of: self))
+    let path = testBundle.path(forResource: Constants.Common.SampleJSONInput, ofType: Constants.Common.JSONType)
+    bundleData = try? Data(contentsOf: URL(fileURLWithPath: path!), options: .alwaysMapped)
+  }
+
+  
+  // MARK : - Tear Down
+  
+  override func tearDown() {
+    clearTestVariables()
+    super.tearDown()
+  }
+  
+  func clearTestVariables() {
+    postInformationList = nil
+    bundleData = nil
+  }
+
+  func testCreatePostListInPostInformationStruct() {
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
+    do {
+      let dictionaryArray = try(JSONSerialization.jsonObject(with: bundleData, options: .allowFragments)) as? [[String: AnyObject]]
+      postInformationList = PostInformation.createPostList(dictionaryArray!)
+      
+      XCTAssertEqual(postInformationList.count, 20, "couldn't parse 20 items from bundle")
+      
+    } catch _ {}
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
+
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
+  }
+  
+  
 }

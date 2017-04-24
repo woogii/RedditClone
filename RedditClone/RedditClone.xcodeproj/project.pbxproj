@@ -14,6 +14,10 @@
 		B888357D1EADABBA000F760E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B888357B1EADABBA000F760E /* LaunchScreen.storyboard */; };
 		B88835881EADABBA000F760E /* RedditCloneTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88835871EADABBA000F760E /* RedditCloneTests.swift */; };
 		B88835971EADB4DF000F760E /* PostInformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88835961EADB4DF000F760E /* PostInformationTableViewCell.swift */; };
+		B888359A1EADB80D000F760E /* PostInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88835991EADB80D000F760E /* PostInformation.swift */; };
+		B888359C1EADC09A000F760E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B888359B1EADC09A000F760E /* Constants.swift */; };
+		B88835A01EADD15C000F760E /* sampleJSONInput.json in Resources */ = {isa = PBXBuildFile; fileRef = B888359F1EADD15C000F760E /* sampleJSONInput.json */; };
+		B88835A41EADD3A9000F760E /* sampleJSONInput.json in Resources */ = {isa = PBXBuildFile; fileRef = B88835A31EADD3A9000F760E /* sampleJSONInput.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +42,10 @@
 		B88835871EADABBA000F760E /* RedditCloneTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditCloneTests.swift; sourceTree = "<group>"; };
 		B88835891EADABBA000F760E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B88835961EADB4DF000F760E /* PostInformationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostInformationTableViewCell.swift; sourceTree = "<group>"; };
+		B88835991EADB80D000F760E /* PostInformation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostInformation.swift; sourceTree = "<group>"; };
+		B888359B1EADC09A000F760E /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		B888359F1EADD15C000F760E /* sampleJSONInput.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleJSONInput.json; sourceTree = "<group>"; };
+		B88835A31EADD3A9000F760E /* sampleJSONInput.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sampleJSONInput.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,7 @@
 		B88835711EADABBA000F760E /* RedditClone */ = {
 			isa = PBXGroup;
 			children = (
+				B88835A21EADD345000F760E /* Constant */,
 				B88835941EADB451000F760E /* View */,
 				B88835931EADB44D000F760E /* Model */,
 				B88835951EADB45C000F760E /* Controller */,
@@ -92,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				B88835871EADABBA000F760E /* RedditCloneTests.swift */,
+				B888359F1EADD15C000F760E /* sampleJSONInput.json */,
 				B88835891EADABBA000F760E /* Info.plist */,
 			);
 			path = RedditCloneTests;
@@ -100,6 +110,7 @@
 		B88835921EADABCA000F760E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				B88835A31EADD3A9000F760E /* sampleJSONInput.json */,
 				B888357E1EADABBA000F760E /* Info.plist */,
 				B88835721EADABBA000F760E /* AppDelegate.swift */,
 				B888357B1EADABBA000F760E /* LaunchScreen.storyboard */,
@@ -111,6 +122,7 @@
 		B88835931EADB44D000F760E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B88835991EADB80D000F760E /* PostInformation.swift */,
 			);
 			name = Model;
 			path = ..;
@@ -140,6 +152,14 @@
 				B88835761EADABBA000F760E /* Main.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		B88835A21EADD345000F760E /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				B888359B1EADC09A000F760E /* Constants.swift */,
+			);
+			name = Constant;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -227,6 +247,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B88835A41EADD3A9000F760E /* sampleJSONInput.json in Resources */,
 				B888357D1EADABBA000F760E /* LaunchScreen.storyboard in Resources */,
 				B888357A1EADABBA000F760E /* Assets.xcassets in Resources */,
 				B88835781EADABBA000F760E /* Main.storyboard in Resources */,
@@ -237,6 +258,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B88835A01EADD15C000F760E /* sampleJSONInput.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +269,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B888359C1EADC09A000F760E /* Constants.swift in Sources */,
+				B888359A1EADB80D000F760E /* PostInformation.swift in Sources */,
 				B88835751EADABBA000F760E /* PostListViewController.swift in Sources */,
 				B88835971EADB4DF000F760E /* PostInformationTableViewCell.swift in Sources */,
 				B88835731EADABBA000F760E /* AppDelegate.swift in Sources */,
