@@ -8,6 +8,12 @@
 
 import UIKit
 
+// MARK : - SubmitNewTopicViewControllerDelegate 
+
+protocol SubmitNewTopicViewControllerDelegate {
+  func updateListAfterSubmittingNewTopic(newTopic:PostInformation)
+}
+
 // MARK : - SubmitNewTopicViewController : UIViewController
 
 class SubmitNewTopicViewController : UIViewController {
@@ -17,6 +23,7 @@ class SubmitNewTopicViewController : UIViewController {
   @IBOutlet weak var inputTextView: UITextView!
   @IBOutlet weak var submitButton: UIButton!
   @IBOutlet weak var textCountLabel: UILabel!
+  var delegate : SubmitNewTopicViewControllerDelegate?
   
   // MARK : - View Life Cycle
   
@@ -65,14 +72,30 @@ class SubmitNewTopicViewController : UIViewController {
   @IBAction func tapSubmitButton(_ sender: UIButton) {
     
     if inputTextView.text.isEmpty {
-      showAlert()
+      showValidateErrorAlert()
+    } else {
+      showSuccessAlert()
+      let newTopic = PostInformation(title: inputTextView.text,postImage: UIImage(named:Constants.ImageName.Default)!,upvoteCount: 0)
+      delegate?.updateListAfterSubmittingNewTopic(newTopic: newTopic)
     }
   }
   
-  func showAlert() {
+  // MARK : - Present AlertController
+  
+  func showValidateErrorAlert() {
     
     let alert = UIAlertController(title: "", message: Constants.SubmitNewTopicVC.EnterTopicDescription, preferredStyle: .alert)
     let alertOkAction = UIAlertAction(title: Constants.Common.Ok, style: .default)
+    alert.addAction(alertOkAction)
+    
+    present(alert, animated: true, completion: nil)
+  }
+  
+  func showSuccessAlert() {
+    let alert = UIAlertController(title: "", message: Constants.SubmitNewTopicVC.TopicIsSubmitted, preferredStyle: .alert)
+    let alertOkAction = UIAlertAction(title: Constants.Common.Ok, style: .default, handler: { (action) in
+      _ = self.navigationController?.popViewController(animated: true)
+    })
     alert.addAction(alertOkAction)
     
     present(alert, animated: true, completion: nil)

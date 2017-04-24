@@ -47,11 +47,33 @@ class PostListViewController: UIViewController {
           print(err)
         #endif
       }
-      
+    }
+  }
+
+  // MARK : - Prepare For Segue 
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    if segue.identifier == Constants.SegueIdentifier.ShowSubmitNewTopicVC {
+      if let destinationVC = segue.destination as? SubmitNewTopicViewController {
+        destinationVC.delegate = self
+      }
+    }
+  }
+}
+
+// MARK : - PostListViewController: SubmitNewTopicViewControllerDelegate
+
+extension PostListViewController : SubmitNewTopicViewControllerDelegate {
+
+  // MARK : - SubmitNewTopicViewControllerDelegate Method
+  
+  func updateListAfterSubmittingNewTopic(newTopic:PostInformation) {
+    postList.append(newTopic)
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
     }
     
   }
-
 }
 
 // MARK : - PostListViewController: UITableViewDataSource

@@ -32,6 +32,10 @@ struct Constants {
     static let SubmitNewTopicViewController = "submitNewTopicVC"
   }
   
+  struct SegueIdentifier {
+    static let ShowSubmitNewTopicVC = "showSubmitNewTopicVC"
+  }
+  
   // MARK : - JSON Response Keys
   
   struct JSONResponseKeys {
@@ -63,6 +67,7 @@ struct Constants {
   struct SubmitNewTopicVC {
     static let MaximumTopicCount = 255
     static let EnterTopicDescription = "Please enter a topic description"
+    static let TopicIsSubmitted = "Your topic is submitted successfully"
   }
   
   // MARK : - PostInformationTableViewCell

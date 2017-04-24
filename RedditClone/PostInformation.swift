@@ -21,6 +21,12 @@ struct PostInformation {
   
   // MARK : - Initialization
   
+  init(title:String, postImage:UIImage, upvoteCount:Int) {
+    self.title = title
+    self.postImage = postImage
+    self.upvoteCount = upvoteCount
+  }
+  
   init(dictionary:[String:AnyObject]) {
     
     self.title = dictionary[Constants.JSONResponseKeys.Title] as? String ?? ""
