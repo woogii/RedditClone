@@ -17,18 +17,19 @@ class PostListViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   var postList = [PostInformation]()
   
-  
   // MARK : - View Life Cycle 
 
   override func viewDidLoad() {
     super.viewDidLoad()
     loadSampleDataFromBundle()
+    
   }
   
   // MARK : - Load Sample Data
   
   func loadSampleDataFromBundle() {
     
+    // Fetch sample data from JSON file
     if let path = Bundle.main.path(forResource: Constants.Common.SampleJSONInput, ofType: Constants.Common.JSONType) {
       
       do {
@@ -49,7 +50,23 @@ class PostListViewController: UIViewController {
       }
     }
   }
+  
+  // MARK : - Target Action 
 
+  @IBAction func tapRefreshButton(_ sender: UIBarButtonItem) {
+ 
+    // Sort Post Information List
+    postList = postList.sorted(by:{
+      return $0.upvoteCount > $1.upvoteCount
+    })
+      
+    DispatchQueue.main.async {
+      self.tableView.reloadData()
+      self.tableView.setContentOffset(CGPoint(x:0, y:0), animated: true)
+    }
+    
+  }
+  
   // MARK : - Prepare For Segue 
   
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
