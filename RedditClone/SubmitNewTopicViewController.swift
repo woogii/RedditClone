@@ -36,17 +36,17 @@ class SubmitNewTopicViewController : UIViewController {
     
   }
   
-  func setTextViewBorderColor() {
+  private func setTextViewBorderColor() {
     inputTextView.layer.borderColor = UIColor.lightGray.cgColor
   }
 
-  func setTextViewAsFirstResponder() {
+  private func setTextViewAsFirstResponder() {
     inputTextView.becomeFirstResponder()
   }
   
   // MARK : - Add Keybord Toolbar
   
-  func addKeyboardToolBar() {
+  private func addKeyboardToolBar() {
     
     let keyboardToolbar = UIToolbar()
     keyboardToolbar.tintColor = UIColor.black

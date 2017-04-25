@@ -40,12 +40,12 @@ class PostInformationTableViewCell: UITableViewCell {
     setButtonsBorderColor()
   }
 
-  func setButtonsCornerRadius() {
+  private func setButtonsCornerRadius() {
     upvotesButton.layer.cornerRadius   = Constants.PostInformationTableViewCell.CornerRadius
     downvotesButton.layer.cornerRadius = Constants.PostInformationTableViewCell.CornerRadius
   }
   
-  func setButtonsBorderColor() {
+  private func setButtonsBorderColor() {
     upvotesButton.layer.borderColor = UIColor.gray.cgColor
     downvotesButton.layer.borderColor = UIColor.gray.cgColor
   }
