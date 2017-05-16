@@ -27,7 +27,7 @@ class PostListViewController: UIViewController {
   
   // MARK : - Load Sample Data
   
-  private func loadSampleDataFromBundle() {
+  func loadSampleDataFromBundle() {
     
     // Fetch sample data from JSON file
     if let path = Bundle.main.path(forResource: Constants.Common.SampleJSONInput, ofType: Constants.Common.JSONType) {
