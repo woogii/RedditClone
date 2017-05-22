@@ -36,12 +36,13 @@ class PostListViewController: UIViewController {
         
         let data = try(Data(contentsOf: URL(fileURLWithPath: path), options: NSData.ReadingOptions.mappedIfSafe))
         
-        let dictionaryArray = try(JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [[String: AnyObject]]
+        if let dictionaryArray = try(JSONSerialization.jsonObject(with: data, options: .allowFragments)) as? [[String: Any]] {
         
-        postList = PostInformation.createPostList(dictionaryArray!)
+          postList = dictionaryArray.flatMap(PostInformation.init)
         
-        DispatchQueue.main.async {
-          self.tableView?.reloadData()
+          DispatchQueue.main.async {
+            self.tableView?.reloadData()
+          }
         }
       } catch let err {
         #if DEBUG
@@ -114,13 +115,13 @@ extension PostListViewController : UITableViewDataSource {
   func configureCell(cell:PostInformationTableViewCell, indexPath:IndexPath) {
     
     cell.postInfo = postList[indexPath.row]
-    cell.upvoteTapAction = { [weak self] in
-      self?.postList[indexPath.row].upvoteCount += 1
-      cell.postInfo = self?.postList[indexPath.row]
+    cell.upvoteTapAction = {
+      self.postList[indexPath.row].upvoteCount += 1
+      cell.postInfo = self.postList[indexPath.row]
     }
-    cell.downvoteTapAction = { [weak self] in
-      self?.postList[indexPath.row].upvoteCount -= 1
-      cell.postInfo = self?.postList[indexPath.row]
+    cell.downvoteTapAction = {
+      self.postList[indexPath.row].upvoteCount -= 1
+      cell.postInfo = self.postList[indexPath.row]
     }
   }
 }
